@@ -3,22 +3,23 @@ import Episodes from './Components/episodes.js';
 import podcasts from './Components/podcasts.js';
 import Following from './Components/following.js';
 import { useState, useEffect } from 'react';
+import { Route, Link, Switch } from 'react-router-dom';
 
 function App() {
   return (
     <div className="App">
-      <h1>PodMine</h1>
-      <ul>
-        <li>
+      <h1>PodMyne</h1>
+        <ul>
+          <li>
           Podcasts
-        </li>
-        <li>
+          </li>
+          <li>
           Episodes
-        </li>
-        <li>
+          </li>
+          <li>
           Following
-        </li>
-      </ul>
+          </li>
+        </ul>
     </div>
   );
 }
