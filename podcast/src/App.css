@@ -19,8 +19,30 @@
 }
 
 
-.podcastsgroup {
-  display: flex;
-  flex-wrap: wrap;
-  align-content: center;
+.cards {
+    /* align-items: center; */
+    /* width: 100%; */
+    /* display: flex; */
+    /* display: -webkit-flex;
+    justify-content: center;
+    -webkit-justify-content: center; */
+    /* flex-direction: row; */
+    border: 1px solid #282c34;
+    max-width: 420px;
+    margin: auto;
+    padding: 10;
+    list-style: none;
+    /* display: inline; */
+    display: grid;
+    justify-content: space-around;
+    flex-direction: row;
 }
+
+.cardlist {
+  display: inline;
+  float: left;
+}
+
+/* .results {
+  max-width: 100px;
+} */
