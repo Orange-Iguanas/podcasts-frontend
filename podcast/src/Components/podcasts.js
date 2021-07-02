@@ -19,6 +19,7 @@ function Podcasts() {
                             src={sample.image}/>
                             </div>
                             <h5>{sample.title}</h5>
+                            <h5>{sample.author}</h5>
                             <h6>{sample.categories}</h6>
                             <div>{sample.description}</div>
                             <a href={sample.website}>View Website</a>
