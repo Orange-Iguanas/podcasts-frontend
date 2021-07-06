@@ -4,11 +4,9 @@ import Form from 'react-bootstrap/Form';
 import { useRef } from 'react';
 import Podcasts from './Components/podcasts.js';
 import { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Link, Switch, Route } from 'react-router-dom';
 import Dropdown from 'react-bootstrap/Dropdown';
 import DropdownButton from 'react-bootstrap/DropdownButton';
 import Button from 'react-bootstrap/Button';
-import sampledata from './Models/sampledata.js';
 import Nav from 'react-bootstrap/Nav';
 // import Card from 'react-bootstrap/Card';
 
@@ -16,6 +14,8 @@ import Nav from 'react-bootstrap/Nav';
 function App() {
   // const categorySelection = useRef(null);
   const descriptionInput = useRef(null);
+  const [recommendations, setRecommendations] = useState([]);
+
   const recommendRun = async (event) => {
     event.preventDefault();
     // const userCat = categorySelection.current.value;
@@ -36,9 +36,10 @@ function App() {
         body: body,
       })
       console.log("response", response);
-      // console.log(userCat,userDes);
+      console.log(userDes);
       const data = await response.json();
       console.log("data", data);
+      setRecommendations(data);
     } catch(error) {
       console.error(error)
     }
@@ -47,77 +48,79 @@ function App() {
   },[]);
   return (
     <div className="App">
-      <h1>PodMyne</h1>
-      <Nav variant="pills" defaultActiveKey="/home">
-  <Nav.Item>
-    <Nav.Link href="/home">Active</Nav.Link>
-  </Nav.Item>
-  <Nav.Item>
-    <Nav.Link eventKey="link-1">Option 2</Nav.Link>
-  </Nav.Item>
-  <Nav.Item>
-    <Nav.Link eventKey="disabled" disabled>
-      Disabled
-    </Nav.Link>
-  </Nav.Item>
-</Nav>
-      <h2>What are you interested in? Choose one:</h2>
-        <Dropdown>
-        </Dropdown>
-              <>
-        <Button variant="outline-secondary">Religion & Spirituality</Button>{' '}
-        <Button variant="outline-success">Society & Culture</Button>{' '}
-        <Button variant="outline-primary">Comedy</Button>{' '}
-        <Button variant="outline-secondary">Christianity</Button>{' '}
-        <Button variant="outline-success">TV & Film</Button>{' '}
-        <Button variant="outline-primary">Music</Button>{' '}
-        <Button variant="outline-secondary">Sports & Recreation</Button>{' '}
-        <Button variant="outline-success">News & Politics</Button>{' '}
-        <Button variant="outline-secondary">Business</Button>{' '}
-        <Button variant="outline-success">Arts</Button>{' '}
-        <Button variant="outline-primary">Education</Button>{' '}
-        <Button variant="outline-secondary">Games & Hobbies</Button>{' '}
-        <Button variant="outline-success">Health</Button>{' '}
-        <Button variant="outline-primary">Technology</Button>{' '}
-        <Button variant="outline-secondary">Professional</Button>{' '}
-        <Button variant="outline-success">Self-Help</Button>{' '}
-        <Button variant="outline-success">Management & Marketing</Button>{' '}
-        <Button variant="outline-success">Science & Medicine</Button>{' '}
-        <Button variant="outline-success">Video Games</Button>{' '}
-        <Button variant="outline-success">Kids & Family</Button>{' '}
-      </>
-      <h2>Please enter a few sentences describing why you enjoy (category)</h2>
-      <p>Example: "I love cooking and eating pizza on the weekends"</p>
-      <Router>
-        <Route path="/podcasts" component={Podcasts} />
-      </Router>
+    <nav className="nav">
+      <h1 className="PodMyne"><img 
+        // width={50}
+        // height={50}
+        src="/Group32.png"/> PodMyne</h1>
+      <ul className="navlist">
+        <li>
+          Podcasts
+        </li>
+        <li>
+          Dashboard
+        </li>
+        <li>
+          Following
+        </li>
+      </ul>
+    </nav>
       <form className="details" onSubmit={recommendRun}>
-        <input type="text" ref={descriptionInput}/>
-        <input type="submit" />
+        <h1>What are you interested in? Choose one:</h1>
+        <div className="buttonGroup">
+          <button type="button" className="buttons">Religion & Spirituality</button>
+          <button type="button" className="buttons">Society & Culture</button>
+          <button type="button" className="buttons">Comedy</button>
+          <button type="button" className="buttons">Christianity</button>
+          <button type="button" className="buttons">TV & Film</button>
+          <button type="button" className="buttons">Music</button>
+          <button type="button" className="buttons">Sports & Recreation</button>
+          <button type="button" className="buttons">News & Politics</button>
+          <button type="button" className="buttons">Business</button>
+          <button type="button" className="buttons">Arts</button>
+          <button type="button" className="buttons">Education</button>
+          <button type="button" className="buttons">Games & Hobbies</button>
+          <button type="button" className="buttons">Health</button>
+          <button type="button" className="buttons">Technology</button>
+          <button type="button" className="buttons">Professional</button>
+          <button type="button" className="buttons">Self-Help</button>
+          <button type="button" className="buttons">Management & Marketing</button>
+          <button type="button" className="buttons">Science & Medicine</button>
+          <button type="button" className="buttons">Video Games</button>
+          <button type="button" className="buttons">Kids & Family</button>
+        </div>
+        <br />
+        <h1>What are you looking for?</h1>
+        <h5>Filter based on interests</h5>
+          <p>In a sentence or two, tell us about what you're <br /> looking for based on your selected category. </p>
+          <input type="text" placeholder="ex. I really love listening to people talk about sports. Football and beer and misogyny." ref={descriptionInput}/>
+          <input type="submit" classname="generateButton" value="Generate Recommendations"/>
       </form>
-      <div className="results">
-        { sampledata 
-            ?  sampledata.map((sample, index) => {
-              return (
-                <div className="cards">
-                  <ul className="cardlist">
-                    <img
-                      width={200}
-                      height={200}
-                      src={sample.image}/>
-                      <h5>{sample.title}</h5>
-                      <h5>{sample.author}</h5>
-                      <h6>{sample.categories}</h6>
-                      <div>{sample.description}</div>
-                      <a href={sample.website} target='_blank'>View Website</a>
-                  </ul>
-                {console.log(sample)}
-              </div>
-            )
-          })
-          : <p>Try Again</p>
-        }
-      </div>
+        <h1 className="resultsTitle">Recommended Podcasts</h1>
+        <h6>Based on selected category and personal interests</h6>
+        <div className="results">
+          { recommendations 
+              ?  recommendations.map((recommendation, index) => {
+                return (
+                  <div className="cards">
+                    <ul className="cardlist">
+                      <img
+                        width={200}
+                        height={200}
+                        src={recommendation.image}/>
+                        <h5 className="recTitle"><b>{recommendation.title}</b></h5>
+                        <h6 className="recAuthor"><b>{recommendation.author}</b></h6>
+                        <h6 className="recCategory"><u>Category:</u> {recommendation.categories}</h6>
+                        <div className="recDescription">{recommendation.description}</div>
+                        <a href={recommendation.website} target='_blank' className="recWebsite">View Website</a>
+                    </ul>
+                  {console.log(recommendations)}
+                </div>
+              )
+            })
+            : <p>Try Again</p>
+          }
+        </div>
     </div>
   );
 }
