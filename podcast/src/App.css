@@ -4,7 +4,7 @@
   font-style: bold;
   height: calc(100vh - 120px);
   margin-left: 200px;
-  padding: 25px;
+  padding: 45px;
 }
 
 /* .nav {
@@ -19,7 +19,8 @@
   z-index: 1;
   top: 0;
   left: 0;
-  background-color: #111;
+  /* background-color: #111; */
+  border: 3px solid #791E94;
   overflow-x: hidden;
   padding-top: 50px;
   color: #791E94;
@@ -76,7 +77,7 @@ input[type=text] {
 }
 
 .results {
-  border: 1px solid black;
+  /* border: 1px solid black; */
   display: flex;
   overflow-x: auto;
   margin-right: 15px;
@@ -91,6 +92,10 @@ input[type=text] {
 
 }
 
+hr.solid {
+  border: 1px solid black;
+}
+
 .buttons {
   background-color: white;
   border: none;
@@ -103,6 +108,11 @@ input[type=text] {
   display: inline-block;
   font-size: 16px;
   transition-duration: 0.4s;
+}
+
+.buttons:active {
+  background-color: #791E94;
+  color: white;
 }
 
 .buttons:hover {

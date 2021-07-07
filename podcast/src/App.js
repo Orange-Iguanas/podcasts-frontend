@@ -23,7 +23,7 @@ function App() {
     const body = JSON.stringify({
       userDes
     });
-    event.currentTarget.reset();
+    // event.currentTarget.reset();
     console.log("testing");
     try {
       const response = await fetch('http://127.0.0.1:5000/app/recommend', {
@@ -66,7 +66,8 @@ function App() {
       </ul>
     </nav>
       <form className="details" onSubmit={recommendRun}>
-        <h1>What are you interested in? Choose one:</h1>
+        <h1>What are you interested in?</h1>
+        <h6>Choose one:</h6>
         <div className="buttonGroup">
           <button type="button" className="buttons">Religion & Spirituality</button>
           <button type="button" className="buttons">Society & Culture</button>
@@ -90,14 +91,19 @@ function App() {
           <button type="button" className="buttons">Kids & Family</button>
         </div>
         <br />
+        <br />
         <h1>What are you looking for?</h1>
-        <h5>Filter based on interests</h5>
+        <h6>Filter based on interests</h6>
+        <hr className="solid"></hr>
           <p>In a sentence or two, tell us about what you're <br /> looking for based on your selected category. </p>
           <input type="text" placeholder="ex. I really love listening to people talk about sports. Football and beer and misogyny." ref={descriptionInput}/>
           <input type="submit" classname="generateButton" value="Generate Recommendations"/>
       </form>
+      <br />
+      <br />
         <h1 className="resultsTitle">Recommended Podcasts</h1>
         <h6>Based on selected category and personal interests</h6>
+        <hr className="solid"></hr>
         <div className="results">
           { recommendations 
               ?  recommendations.map((recommendation, index) => {
@@ -118,7 +124,7 @@ function App() {
                 </div>
               )
             })
-            : <p>Try Again</p>
+            : <p>No results available. Try Again</p>
           }
         </div>
     </div>
