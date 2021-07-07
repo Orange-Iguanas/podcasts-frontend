@@ -53,7 +53,7 @@ function App() {
         // width={50}
         // height={50}
         src="/Group32.png"/> PodMyne</h1>
-      <ul className="navlist">
+      <div className="navlist">
         <li>
           Podcasts
         </li>
@@ -63,7 +63,7 @@ function App() {
         <li>
           Following
         </li>
-      </ul>
+      </div>
     </nav>
       <form className="details" onSubmit={recommendRun}>
         <h1>What are you interested in?</h1>
@@ -96,7 +96,7 @@ function App() {
         <h6>Filter based on interests</h6>
         <hr className="solid"></hr>
           <p>In a sentence or two, tell us about what you're <br /> looking for based on your selected category. </p>
-          <input type="text" placeholder="ex. I really love listening to people talk about sports. Football and beer and misogyny." ref={descriptionInput}/>
+          <input type="text" placeholder="ex. I really love listening to people talk about food. Craft beer, new restaurants, and culinary skills." ref={descriptionInput}/>
           <input type="submit" classname="generateButton" value="Generate Recommendations"/>
       </form>
       <br />
