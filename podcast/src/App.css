@@ -19,12 +19,12 @@
   z-index: 1;
   top: 0;
   left: 0;
-  /* background-color: #111; */
+  background-color: #111;
   border-right: 1px solid #791E94;
   overflow-x: hidden;
   padding-top: 50px;
   color: #791E94;
-  list-style: none;
+  /* list-style: none; */
   display: flex;
   align-items: flex-start;
   font-family: 'Montserrat', sans-serif;
@@ -33,11 +33,11 @@
 
 .navlist {
   float: inline-end;
-  list-style: none;
+  /* list-style: none; */
   display: flex;
   align-items: flex-start;
   flex-direction: column;
-  padding-bottom: 550px;
+  padding-bottom: 700px;
   padding-left: 30px;
   font-size: 25px;
 }

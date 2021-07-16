@@ -1,42 +1,38 @@
 import './App.css';
 import React from 'react';
-import Form from 'react-bootstrap/Form';
 import { useRef } from 'react';
-import Podcasts from './Components/podcasts.js';
 import { useState, useEffect } from 'react';
-import Dropdown from 'react-bootstrap/Dropdown';
-import DropdownButton from 'react-bootstrap/DropdownButton';
-import Button from 'react-bootstrap/Button';
-import Nav from 'react-bootstrap/Nav';
 // import Card from 'react-bootstrap/Card';
 
 
 function App() {
-  // const categorySelection = useRef(null);
+  const [categorySelection, setSelection] = useState([null]);
   const descriptionInput = useRef(null);
   const [recommendations, setRecommendations] = useState([]);
 
+
   const recommendRun = async (event) => {
     event.preventDefault();
-    // const userCat = categorySelection.current.value;
+    const userCat = categorySelection.current.value;
     const userDes = descriptionInput.current.value;
     const body = JSON.stringify({
-      userDes
+       userCat, userDes
     });
-    // event.currentTarget.reset();
+    event.currentTarget.reset();
     console.log("testing");
     try {
-      const response = await fetch('http://127.0.0.1:5000/app/recommend', {
+      const response = await fetch('https://www.podmyne.com/api/recommend', {
         method: 'POST',
         headers: {
-          'Content-type': 'application/json',
+          'Content-Type': 'application/json',
           'key': 'form_data',
         },
         key: 'form_data',
         body: body,
       })
       console.log("response", response);
-      console.log(userDes);
+      console.log(userCat, userDes);
+      console.log(body);
       const data = await response.json();
       console.log("data", data);
       setRecommendations(data);
@@ -45,7 +41,9 @@ function App() {
     }
   }
   useEffect(() => {
+    
   },[]);
+
   return (
     <div className="App">
     <nav className="nav">
@@ -65,35 +63,57 @@ function App() {
         </li>
       </div>
     </nav>
-      <form className="details" onSubmit={recommendRun}>
+      {/* <form className="details" onSubmit={recommendRun}> */}
         <h1>What are you interested in?</h1>
         <h6>Choose one:</h6>
-        <div className="buttonGroup">
-          <button type="button" className="buttons">Religion & Spirituality</button>
-          <button type="button" className="buttons">Society & Culture</button>
-          <button type="button" className="buttons">Comedy</button>
-          <button type="button" className="buttons">Christianity</button>
-          <button type="button" className="buttons">TV & Film</button>
-          <button type="button" className="buttons">Music</button>
-          <button type="button" className="buttons">Sports & Recreation</button>
-          <button type="button" className="buttons">News & Politics</button>
-          <button type="button" className="buttons">Business</button>
-          <button type="button" className="buttons">Arts</button>
-          <button type="button" className="buttons">Education</button>
-          <button type="button" className="buttons">Games & Hobbies</button>
-          <button type="button" className="buttons">Health</button>
-          <button type="button" className="buttons">Technology</button>
-          <button type="button" className="buttons">Professional</button>
-          <button type="button" className="buttons">Self-Help</button>
-          <button type="button" className="buttons">Management & Marketing</button>
-          <button type="button" className="buttons">Science & Medicine</button>
-          <button type="button" className="buttons">Video Games</button>
-          <button type="button" className="buttons">Kids & Family</button>
+        <div className="buttonGroup" ref={categorySelection}>
+          <input type="button" value="Religion & Spirituality"/>
+          <input type="button" value="Society & Culture" />
+          <input type="button" value="Comedy" />
+          <input type="button" value="Christianity" />
+          <input type="button" value="TV & Film" />
+          <input type="button" value="Music" />
+          <input type="button" value="Sports & Recreation" />
+          <input type="button" value="News & Politics" />
+          <input type="button" value="Business" />
+          <input type="button" value="Arts" />
+          <input type="button" value="Education" />
+          <input type="button" value="Games & Hobbies" />
+          <input type="button" value="Health" />
+          <input type="button" value="Technology" />
+          <input type="button" value="Professional" />
+          <input type="button" value="Self-Help" />
+          <input type="button" value="Management & Marketing" />
+          <input type="button" value="Science & Medicine" />
+          <input type="button" value="Video Games" />
+          <input type="button" value="Kids & Family" />
+          {/* <button ref={categorySelection} value="Religion & Spirituality" type="submit" className="buttons">Religion & Spirituality</button>
+          <button ref={categorySelection} value="Society & Culture" type="submit" className="buttons">Society & Culture</button>
+          <button ref={categorySelection} value="Comedy" type="submit" className="buttons">Comedy</button>
+          <button ref={categorySelection} value="Christianity" type="button" className="buttons">Christianity</button>
+          <button ref={categorySelection} value="TV & Film" type="submit" className="buttons">TV & Film</button>
+          <button ref={categorySelection} value="Music" type="submit" className="buttons">Music</button>
+          <button ref={categorySelection} value="Sports & Recreation" type="submit" className="buttons">Sports & Recreation</button>
+          <button ref={categorySelection} value="News & Politics" type="submit" className="buttons">News & Politics</button>
+          <button ref={categorySelection} value="Business" type="submit" className="buttons">Business</button>
+          <button ref={categorySelection} value="Arts" type="submit" className="buttons">Arts</button>
+          <button ref={categorySelection} value="Education" type="submit" className="buttons">Education</button>
+          <button ref={categorySelection} value="Games & Hobbies" type="submit" className="buttons">Games & Hobbies</button>
+          <button ref={categorySelection} value="Health" type="submit" className="buttons">Health</button>
+          <button ref={categorySelection} value="Technology" type="submit" className="buttons">Technology</button>
+          <button ref={categorySelection} value="Professional" type="submit" className="buttons">Professional</button>
+          <button ref={categorySelection} value="Self-Help" type="submit" className="buttons">Self-Help</button>
+          <button ref={categorySelection} value="Management & Marketing" type="submit" className="buttons">Management & Marketing</button>
+          <input type="button" ref={categorySelection} value="Science & Medicine" className="buttons"/>
+          <button ref={categorySelection} value="Video Games" type="submit" className="buttons">Video Games</button>
+          <button ref={categorySelection} value="Kids & Family" type="submit" className="buttons">Kids & Family</button>
+          <input type="button" value="Music" ref={categorySelection}/> */}
         </div>
         <br />
         <br />
         <h1>What are you looking for?</h1>
         <h6>Filter based on interests</h6>
+        <form className="details" onSubmit={recommendRun}>
         <hr className="solid"></hr>
           <p>In a sentence or two, tell us about what you're <br /> looking for based on your selected category. </p>
           <input type="text" placeholder="ex. I really love listening to people talk about food. Craft beer, new restaurants, and culinary skills." ref={descriptionInput}/>
