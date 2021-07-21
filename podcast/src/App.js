@@ -2,11 +2,12 @@ import './App.css';
 import React from 'react';
 import { useRef } from 'react';
 import { useState, useEffect } from 'react';
+import ButtonContainer from './Components/buttons';
 // import Card from 'react-bootstrap/Card';
 
 
 function App() {
-  const [categorySelection, setSelection] = useState([null]);
+  const [categorySelection, setCategorySelection] = useState('');
   const descriptionInput = useRef(null);
   const [recommendations, setRecommendations] = useState([]);
 
@@ -66,27 +67,28 @@ function App() {
       {/* <form className="details" onSubmit={recommendRun}> */}
         <h1>What are you interested in?</h1>
         <h6>Choose one:</h6>
-        <div className="buttonGroup" ref={categorySelection}>
-          <input type="button" value="Religion & Spirituality"/>
-          <input type="button" value="Society & Culture" />
-          <input type="button" value="Comedy" />
-          <input type="button" value="Christianity" />
-          <input type="button" value="TV & Film" />
-          <input type="button" value="Music" />
-          <input type="button" value="Sports & Recreation" />
-          <input type="button" value="News & Politics" />
-          <input type="button" value="Business" />
-          <input type="button" value="Arts" />
-          <input type="button" value="Education" />
-          <input type="button" value="Games & Hobbies" />
-          <input type="button" value="Health" />
-          <input type="button" value="Technology" />
-          <input type="button" value="Professional" />
-          <input type="button" value="Self-Help" />
-          <input type="button" value="Management & Marketing" />
-          <input type="button" value="Science & Medicine" />
-          <input type="button" value="Video Games" />
-          <input type="button" value="Kids & Family" />
+        <div className="buttonGroup">
+        <ButtonContainer/>
+          {/* <input type="button" value="Religion & Spirituality" ref={categorySelection}/>
+          <input type="button" value="Society & Culture" ref={categorySelection}/>
+          <input type="button" value="Comedy" ref={categorySelection}/>
+          <input type="button" value="Christianity" ref={categorySelection}/>
+          <input type="button" value="TV & Film" ref={categorySelection}/>
+          <input type="button" value="Music" ref={categorySelection}/>
+          <input type="button" value="Sports & Recreation" ref={categorySelection}/>
+          <input type="button" value="News & Politics" ref={categorySelection}/>
+          <input type="button" value="Business" ref={categorySelection}/>
+          <input type="button" value="Arts" ref={categorySelection}/>
+          <input type="button" value="Education" ref={categorySelection}/>
+          <input type="button" value="Games & Hobbies" ref={categorySelection}/>
+          <input type="button" value="Health" ref={categorySelection}/>
+          <input type="button" value="Technology" ref={categorySelection}/>
+          <input type="button" value="Professional" ref={categorySelection}/>
+          <input type="button" value="Self-Help" ref={categorySelection}/>
+          <input type="button" value="Management & Marketing" ref={categorySelection}/>
+          <input type="button" value="Science & Medicine" ref={categorySelection}/>
+          <input type="button" value="Video Games" ref={categorySelection}/>
+          <input type="button" value="Kids & Family" ref={categorySelection}/> */}
           {/* <button ref={categorySelection} value="Religion & Spirituality" type="submit" className="buttons">Religion & Spirituality</button>
           <button ref={categorySelection} value="Society & Culture" type="submit" className="buttons">Society & Culture</button>
           <button ref={categorySelection} value="Comedy" type="submit" className="buttons">Comedy</button>
