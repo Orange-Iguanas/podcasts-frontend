@@ -9,7 +9,7 @@ function ButtonContainer({ categorySelection, setCategorySelection }) {
     const handleClick = (e) => {
       console.log('value: ' + e.target.value);
       setCategorySelection(e.target.value);
-      console.log('category selection: ' + categorySelection);
+      // console.log('category selection: ' + categorySelection);
     }
     
     return (

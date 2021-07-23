@@ -35,6 +35,7 @@ function App() {
       console.log("response", response);
       // console.log(userCat, userDes);
       // console.log(body);
+      console.log('category selection: ' + categorySelection);
       console.log("data", data);
       setRecommendations(data);
     } catch(error) {
@@ -49,7 +50,7 @@ function App() {
     <div className="App">
     <nav className="nav">
       <h1 className="PodMyne">
-      <img src="/Group32.png" alt="logo"/> 
+        <img src="/Group32.png" alt="logo"/> 
         PodMyne
       </h1>
       <div className="navlist">
