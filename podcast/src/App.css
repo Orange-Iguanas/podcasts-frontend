@@ -19,7 +19,7 @@
   z-index: 1;
   top: 0;
   left: 0;
-  background-color: #111;
+  background-color:white;
   border-right: 1px solid #791E94;
   overflow-x: hidden;
   padding-top: 50px;
@@ -63,7 +63,7 @@
   color: #61dafb;
 }
 
-input[type=button], input[type=submit] {
+input[type=submit] {
   background-color: orangered;
   color: white;
   padding: 10px 10px;
@@ -118,6 +118,11 @@ hr.solid {
 }
 
 .buttons:active {
+  background-color: #791E94;
+  color: white;
+}
+
+.buttons:focus {
   background-color: #791E94;
   color: white;
 }
