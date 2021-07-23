@@ -7,9 +7,9 @@ function ButtonContainer({ categorySelection, setCategorySelection }) {
     const array = [ 'Religion & Spirituality', 'Society & Culture', 'Comedy', 'Christianity', 'TV & Film', 'Music', 'Sports & Recreation', 'News & Politics', 'Business', 'Arts', 'Education', 'Games & Hobbies', 'Health', 'Technology', 'Professional', 'Self-Help', 'Management & Marketing', 'Science & Medicine', 'Video Games', 'Kids & Family'];
 
     const handleClick = (e) => {
-      console.log("value: " + e.target.value)
+      console.log('value: ' + e.target.value);
       setCategorySelection(e.target.value);
-      console.log('category selection: ' + categorySelection)
+      console.log('category selection: ' + categorySelection);
     }
     
     return (

@@ -20,7 +20,7 @@ function App() {
         userCat, userDes
     });
     event.currentTarget.reset();
-    console.log("testing");
+    console.log("testing. " + body);
     try {
       const response = await fetch('https://www.podmyne.com/api/recommend', {
         method: 'POST',
@@ -31,11 +31,11 @@ function App() {
         key: 'form_data',
         body: body,
       })
+      const data = await response.json();
       console.log("response", response);
       // console.log(userCat, userDes);
       // console.log(body);
-      const data = await response.json();
-      // console.log("data", data);
+      console.log("data", data);
       setRecommendations(data);
     } catch(error) {
       console.error(error)
@@ -86,7 +86,7 @@ function App() {
           { recommendations 
               ?  recommendations.map((recommendation, index) => {
                 return (
-                  <div className="cards">
+                  <div key={index} className="cards">
                     <ul className="cardlist">
                       <img
                         width={200}
@@ -100,7 +100,7 @@ function App() {
                       <div className="recDescription">{recommendation.description}</div>
                       <a href={recommendation.website} rel="noopener noreferrer" target="_blank" className="recWebsite">View Website</a>
                     </ul>
-                  {console.log(recommendations)}
+                  {/* {console.log(recommendations)} */}
                 </div>
               )
             })
